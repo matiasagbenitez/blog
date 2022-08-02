@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -42,5 +43,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function category(Category $category)
+    {
+        $posts = Post::where('category_id', $category->id)->where('status', 2)->latest()->paginate(11);
+        return view('posts.category', compact('posts', 'category'));
     }
 }
