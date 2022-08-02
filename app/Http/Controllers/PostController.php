@@ -23,9 +23,10 @@ class PostController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        $relateds = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->latest('id')->take(4)->get();
+        return view('posts.show', compact('post', 'relateds'));
     }
 
     public function edit($id)

@@ -19,7 +19,7 @@
                         </div>
                         {{-- TITLE --}}
                         <h1 class="text-2xl text-gray-800 font-bold hover:text-gray-900">
-                            <a href="#">
+                            <a href="{{ route('posts.show', $post) }}">
                                 {{ $post->name }}
                             </a>
                         </h1>
