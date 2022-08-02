@@ -4,7 +4,7 @@
 
         <div class="my-5">
             <h1 class="text-gray-800 text-2xl uppercase text-center font-bold">Posts about
-                <span class="text-black italic">{{ $category->name }}</span> category
+                <span class="text-black italic">#{{ $tag->name }}</span>
             </h1>
         </div>
 
