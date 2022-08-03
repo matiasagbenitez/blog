@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Edit category</h1>
+    <h1>Create new tag</h1>
 @stop
 
 @section('content')
@@ -11,12 +11,12 @@
         <div class="card-body">
 
             {{-- FORMULARIO --}}
-            {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'PUT']) !!}
+            {!! Form::open(['route' => 'admin.tags.store']) !!}
 
                 {{-- Nombre --}}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter category name...']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter tag name...']) !!}
 
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
@@ -33,8 +33,19 @@
                     @enderror
                 </div>
 
+                {{-- Color --}}
+                <div class="form-group">
+                    {!! Form::label('color', 'Color') !!}
+                    {!! Form::select('color', [null => 'Select color...'] + $colors,
+                    null, ['class' => 'form-control']) !!}
+
+                    @error('color')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 {{-- Botón --}}
-                {!! Form::submit('Save changes', ['class' => 'btn btn-primary float-right']) !!}
+                {!! Form::submit('Create tag', ['class' => 'btn btn-primary float-right']) !!}
 
             {!! Form::close() !!}
 

@@ -34,7 +34,7 @@
                 </div>
 
                 {{-- Botón --}}
-                {!! Form::submit('Create category', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Create category', ['class' => 'btn btn-primary float-right']) !!}
 
             {!! Form::close() !!}
 
