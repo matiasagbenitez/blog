@@ -93,6 +93,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        //
+        // $this->authorize('author', $post);
+        $post->delete();
+        // Cache::flush();
+        return redirect()->route('admin.posts.index')->with('info', 'Post deleted succesfully!');
     }
 }
