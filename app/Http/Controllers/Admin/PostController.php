@@ -51,14 +51,44 @@ class PostController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        // $this->authorize('author', $post);
+
+        $categories = Category::pluck('name', 'id');
+        $tags = Tag::all();
+
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
-        //
+        // $this->authorize('author', $post);
+        $post->update($request->all());
+
+        if ($request->file('file')) {
+
+            $url = Storage::put('public/posts', $request->file('file'));
+
+            if ($post->image) {
+                Storage::delete($post->image->url);
+                $post->image->update([
+                    'url' => $url
+                ]);
+            } else {
+                $post->image()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+
+        if ($request->tags) {
+            $post->tags()->sync($request->tags);
+        }
+
+        // Cache::flush();
+
+        return redirect()->route('admin.posts.index')->with('info', 'Post updated succesfully!');
     }
 
     public function destroy(Post $post)

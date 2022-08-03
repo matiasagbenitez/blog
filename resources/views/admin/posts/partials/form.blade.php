@@ -56,7 +56,7 @@
     <div class="col">
         <div class="image-wrapper">
             @isset ($post->image)
-                <img id="picture" class="img-thumbnail" src="{{ asset('storage/'.$post->image->url) }}" alt="Imagen del post">
+                <img id="picture" class="img-thumbnail" src="{{ Storage::url($post->image->url) }}" alt="Imagen del post">
             @else
                 <img id="picture" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2019/11/11/04/33/elephant-4617134_960_720.jpg" alt="Imagen por defecto">
             @endisset
