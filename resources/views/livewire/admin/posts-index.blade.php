@@ -1,12 +1,12 @@
 <div class="card">
 
     {{-- BUSCADOR --}}
-    <div class="card-header form-row gap-5">
+    <div class="card-header form-row">
             <div class="col-md-10">
                 <input type="text" class="form-control" placeholder="Filter your search here..." wire:model="search">
             </div>
-            <div class="col-md-2">
-                <a class="btn btn-success" href="{{ route('admin.categories.create') }}">Create new category</a>
+            <div class="float-right">
+                <a class="btn btn-success" href="{{ route('admin.posts.create') }}">Create new post</a>
             </div>
     </div>
 
