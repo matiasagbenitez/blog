@@ -71,7 +71,7 @@ class PostController extends Controller
             $url = Storage::put('public/posts', $request->file('file'));
 
             if ($post->image) {
-                Storage::delete($post->image->url);
+                // Storage::delete($post->image->url);
                 $post->image->update([
                     'url' => $url
                 ]);

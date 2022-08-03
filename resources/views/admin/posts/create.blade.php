@@ -15,7 +15,7 @@
             {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off', 'files' => true]) !!}
 
                 {{-- Información del usuario autenticado --}}
-                {!! Form::hidden('user_id', auth()->user()->id) !!}
+                {{-- {!! Form::hidden('user_id', auth()->user()->id) !!} --}}
 
                 @include('admin.posts.partials.form')
 
