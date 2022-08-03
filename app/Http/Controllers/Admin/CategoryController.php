@@ -59,6 +59,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        $categories = Category::all();
+
+        return redirect()->route('admin.categories.index', compact('categories'))->with('info', 'Category deleted succesfully!');
     }
 }
