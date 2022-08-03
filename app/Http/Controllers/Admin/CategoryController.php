@@ -23,15 +23,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'name' => 'required|unique:categories',
+            'slug' => 'required'
         ]);
 
         Category::create($request->all());
-
         $categories = Category::all();
 
-        return view('admin.categories.index', compact('categories'));
+        return redirect()->route('admin.categories.index', compact('categories'))->with('info', 'Category created succesfully!');
     }
 
     public function show(Category $category)
@@ -46,7 +45,16 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => "required|unique:categories,name,$category->id",
+            'slug' => 'required'
+        ]);
+
+        $category->update($request->all());
+        $categories = Category::all();
+
+        return redirect()->route('admin.categories.index', compact('categories'))->with('info', 'Category updated succesfully!');
+
     }
 
     public function destroy(Category $category)
