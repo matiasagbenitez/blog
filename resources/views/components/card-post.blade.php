@@ -2,7 +2,7 @@
 
 <article class="mt-5 bg-white shadow-lg rounded-lg overflow-hidden">
     <img class="w-full h-72 object-cover object-center"
-        src="@if ($post->image) {{ asset('storage/' . $post->image->url) }} @else https://cdn.pixabay.com/photo/2022/06/02/11/12/felucca-7237715_960_720.jpg @endif"
+        src="@if ($post->image) {{ Storage::url($post->image->url) }}  @else https://cdn.pixabay.com/photo/2019/11/11/04/33/elephant-4617134_960_720.jpg @endif"
         alt="Imagen">
 
     <div class="py-4 px-6">

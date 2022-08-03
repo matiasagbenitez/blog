@@ -268,7 +268,7 @@ return [
 
         ['header' => 'BLOG OPTIONS'],
         [
-            'text' => 'Post list',
+            'text' => 'My posts',
             'route'  => 'admin.posts.index',
             'icon'      => 'fa fa-fw fa-clipboard',
             // 'active'    => ['admin/posts/*'],

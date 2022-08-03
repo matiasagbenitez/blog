@@ -16,7 +16,7 @@
             {{-- PRINCIPAL --}}
             <div class="lg:col-span-2">
                 <figure>
-                    <img class="w-full rounded-lg" src="@if($post->image) {{ asset('storage/'.$post->image->url) }} @else https://cdn.pixabay.com/photo/2022/06/02/11/12/felucca-7237715_960_720.jpg @endif" alt="Imagen del post">
+                    <img class="w-full rounded-lg" src="@if($post->image) {{ Storage::url($post->image->url) }} @else https://cdn.pixabay.com/photo/2019/11/11/04/33/elephant-4617134_960_720.jpg @endif" alt="Imagen del post">
                 </figure>
                 <div class="text-base my-4 text-justify">
                     {{ $post->body }}
@@ -33,7 +33,7 @@
                     @foreach ($relateds as $related)
                         <li class="mb-4">
                             <a href="{{ route('posts.show', $related )}}" class="grid grid-cols-3">
-                                <img class="w-36 h-20 object-cover col-span-1 rounded-lg" src="@if($related->image) {{ asset('storage/'.$related->image->url) }} @else https://cdn.pixabay.com/photo/2022/06/02/11/12/felucca-7237715_960_720.jpg @endif" alt="Imagen del post">
+                                <img class="w-36 h-20 object-cover col-span-1 rounded-lg" src="@if($related->image) {{ Storage::url($related->image->url) }} @else https://cdn.pixabay.com/photo/2019/11/11/04/33/elephant-4617134_960_720.jpg @endif" alt="Imagen del post">
                                 <span class="ml-2 text-gray-600 col-span-2">{{ $related->name }}</span>
                             </a>
                         </li>

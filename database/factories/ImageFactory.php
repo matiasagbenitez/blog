@@ -9,7 +9,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            'url' => 'posts/imagen-de-prueba.jpg'
+            'url' => 'public/posts/imagen-de-prueba.jpg'
         ];
     }
 }

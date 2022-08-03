@@ -1,11 +1,11 @@
 <x-app-layout>
 
-    <div class="container my-5">
+    <div class="container py-5">
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($posts as $post)
                 <article class="w-full h-80 bg-cover bg-center rounded-lg @if($loop->first) md:col-span-2 @endif"
-                    style="background-image: url(@if($post->image) {{ asset('storage/'.$post->image->url) }} @else https://cdn.pixabay.com/photo/2022/06/02/11/12/felucca-7237715_960_720.jpg @endif)">
+                    style="background-image: url(@if($post->image) {{ Storage::url($post->image->url) }} @else hhttps://cdn.pixabay.com/photo/2019/11/11/04/33/elephant-4617134_960_720.jpg @endif)">
 
                     {{-- CONTENT --}}
                     <div class="w-full h-full px-8 flex flex-col justify-center">

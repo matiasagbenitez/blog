@@ -12,7 +12,7 @@
             <x-card-post :post="$post" />
         @endforeach
 
-        <div class="my-5">
+        <div class="py-5">
             {{ $posts->links() }}
         </div>
 
