@@ -7,13 +7,51 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-@stop
+    <div class="card">
+        <div class="card-body">
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+            {{-- FORMULARIO --}}
+            {!! Form::open(['route' => 'admin.categories.store']) !!}
+
+                {{-- Nombre --}}
+                <div class="form-group">
+                    {!! Form::label('name', 'Name') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter category name...']) !!}
+
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {{-- Slug --}}
+                <div class="form-group">
+                    {!! Form::label('slug', 'Slug') !!}
+                    {!! Form::text('slug', null, ['class' => 'form-control', 'readOnly']) !!}
+
+                    @error('slug')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {{-- Botón --}}
+                {!! Form::submit('Create category', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+
+        </div>
+    </div>
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+    <script src="{{ asset('vendor/string-to-slug/jquery.stringToSlug.min.js') }}"></script>
+
+    <script>
+        $(document).ready( function() {
+            $("#name").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+    </script>
+@endsection

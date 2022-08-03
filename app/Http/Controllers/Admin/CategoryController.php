@@ -22,7 +22,16 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:categories'
+        ]);
+
+        Category::create($request->all());
+
+        $categories = Category::all();
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     public function show(Category $category)
