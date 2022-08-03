@@ -251,6 +251,7 @@ return [
             'route'         => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw',
         ],
+
         ['header' => 'ADMINISTRATOR'],
         [
             'text' => 'Categories',
@@ -264,64 +265,19 @@ return [
             'icon'      => 'far fa-fw fa-bookmark',
             'active'    => ['admin/tags/*'],
         ],
+
+        ['header' => 'BLOG OPTIONS'],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Post list',
+            'route'  => 'admin.posts.index',
+            'icon'      => 'fa fa-fw fa-clipboard',
+            // 'active'    => ['admin/posts/*'],
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text' => 'Create new post',
+            'route'  => 'admin.posts.create',
+            'icon'      => 'far fa-fw fa-file',
+            // 'active'    => ['admin/posts/create'],
         ],
     ],
 
@@ -477,5 +433,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
