@@ -9,6 +9,14 @@ use App\Http\Controllers\Controller;
 class TagController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('can:admin.tags.index')->only('index');
+        $this->middleware('can:admin.tags.create')->only('create');
+        $this->middleware('can:admin.tags.edit')->only('edit', 'update');
+        $this->middleware('can:admin.tags.delete')->only('destroy');
+    }
+
     public function index()
     {
         $tags = Tag::all();
@@ -44,11 +52,6 @@ class TagController extends Controller
         $tags = Tag::all();
 
         return redirect()->route('admin.tags.index', compact('tags'))->with('info', 'Tag created succesfully!');
-    }
-
-    public function show(Tag $tag)
-    {
-        return view('admin.tags.show');
     }
 
     public function edit(Tag $tag)
