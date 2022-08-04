@@ -16,9 +16,11 @@
 
     <div class="card">
 
-        <div class="card-header">
-            <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Create new tag</a>
-        </div>
+        @can('admin.tags.create')
+            <div class="card-header">
+                <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Create new tag</a>
+            </div>
+        @endcan
 
         <div class="card-body">
             <table class="table table-striped">
@@ -35,14 +37,18 @@
                             <td>{{ $tag->id }}</td>
                             <td>{{ $tag->name }}</td>
                             <td width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{ route('admin.tags.edit', $tag) }}">Edit</a>
+                                @can('admin.tags.edit')
+                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.tags.edit', $tag) }}">Edit</a>
+                                @endcan
                             </td>
                             <td width="10px">
-                                <form action="{{ route('admin.tags.destroy', $tag) }}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
+                                @can('admin.tags.delete')
+                                    <form action="{{ route('admin.tags.destroy', $tag) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach
