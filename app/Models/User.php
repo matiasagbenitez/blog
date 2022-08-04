@@ -42,6 +42,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     // --------------------------------- RELACIONES ---------------------------------
     public function posts() {
         return $this->hasMany(Post::class);
